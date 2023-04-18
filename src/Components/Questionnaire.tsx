@@ -19,7 +19,7 @@ const Questionnaire = ({
       <div className="w-full">
         {allQuestions[currentQuestion].options.map((option:any) => (
           <button
-            className="m-2 h-10 ring-2 ring-inset ring-[#D8D8D8] text-base w-full text-left pl-4 rounded-md bg-white hover:ring-orange-600 transition-all duration-200"
+            className="m-2 h-10 ring-2 ring-inset ring-[#D8D8D8] text-base w-full text-left pl-4 rounded-md bg-white lg:hover:ring-orange-600 transition-all duration-200"
             onClick={() => handleAnswerOptions(option.points)}
           >
             {option.answerText}

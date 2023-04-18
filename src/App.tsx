@@ -32,7 +32,6 @@ const App = () => {
         {showScore ? (
           <FinalScore score = {score} handleReset={handleReset}></FinalScore>
         ) : (
-
           <Questionnaire currentQuestion={currentQuestion} allQuestions={allQuestions} handleAnswerOptions={handleAnswerOptions}></Questionnaire>
         )}
       </div>
