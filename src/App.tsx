@@ -26,11 +26,13 @@ const App = () => {
   };
 
   return (
-    <div className="flex p-6 w-full h-screen justify-center items-center bg-gradient-to-r from-violet-800 to-sky-400">
+    <div className="flex p-6 w-full h-screen justify-center items-center bg-gradient-to-r from-red-800 to-orange-400">
       <div className="bg-slate-100 p-8 rounded-lg shadow-2xl w-full max-w-xl text-center">
+        <img src="/ab-inbev-logo-0.png" className="w-80 flex ml-auto mr-auto mb-6" alt="Logo" />
         {showScore ? (
           <FinalScore score = {score} handleReset={handleReset}></FinalScore>
         ) : (
+
           <Questionnaire currentQuestion={currentQuestion} allQuestions={allQuestions} handleAnswerOptions={handleAnswerOptions}></Questionnaire>
         )}
       </div>
