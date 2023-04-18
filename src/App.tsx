@@ -3,10 +3,12 @@ import usePointsStore from "./stores/points";
 import allQuestions from "./Questions";
 import FinalScore from "./Components/FinalScore";
 import Questionnaire from "./Components/Questionnaire";
+import ContactInfo from "./Components/ContactInfo";
 
 const App = () => {
   const [currentQuestion, setcurrentQuestion] = useState(0);
   const { score, showScore, setScore, setShowScore } = usePointsStore();
+  const [showContactInfo, setShowContactInfo] = useState(false);
 
   const handleAnswerOptions = (points: number) => {
     setScore(score + points);
@@ -15,7 +17,7 @@ const App = () => {
     if (handleNextQuestion < allQuestions.length) {
       setcurrentQuestion(handleNextQuestion);
     } else {
-      setShowScore(true);
+      setShowContactInfo(true);
     }
   };
 
@@ -28,11 +30,21 @@ const App = () => {
   return (
     <div className="flex p-6 w-full h-screen justify-center items-center bg-gradient-to-r from-red-800 to-orange-400">
       <div className="bg-slate-100 p-8 rounded-lg shadow-2xl w-full max-w-xl text-center">
-        <img src="/ab-inbev-logo-0.png" className="w-80 flex ml-auto mr-auto mb-6" alt="Logo" />
+        <img
+          src="/ab-inbev-logo-0.png"
+          className="w-80 flex ml-auto mr-auto mb-6"
+          alt="Logo"
+        />
         {showScore ? (
-          <FinalScore score = {score} handleReset={handleReset}></FinalScore>
+          <FinalScore score={score} handleReset={handleReset}></FinalScore>
+        ) : showContactInfo ? (
+          <ContactInfo setShowContactInfo={setShowContactInfo} setShowScore={setShowScore} />
         ) : (
-          <Questionnaire currentQuestion={currentQuestion} allQuestions={allQuestions} handleAnswerOptions={handleAnswerOptions}></Questionnaire>
+          <Questionnaire
+            currentQuestion={currentQuestion}
+            allQuestions={allQuestions}
+            handleAnswerOptions={handleAnswerOptions}
+          ></Questionnaire>
         )}
       </div>
     </div>
