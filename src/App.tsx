@@ -4,10 +4,11 @@ import allQuestions from "./Questions";
 import FinalScore from "./Components/FinalScore";
 import Questionnaire from "./Components/Questionnaire";
 import ContactInfo from "./Components/ContactInfo";
+import StartAudit from "./Components/StartAudit";
 
 const App = () => {
   const [currentQuestion, setcurrentQuestion] = useState(0);
-  const { score, showScore, setScore, setShowScore } = usePointsStore();
+  const { score, showScore, setScore, setShowScore, firstStep, setFirstStep } = usePointsStore();
   const [showContactInfo, setShowContactInfo] = useState(false);
 
   const handleAnswerOptions = (points: number) => {
@@ -25,6 +26,7 @@ const App = () => {
     setcurrentQuestion(0);
     setShowScore(false);
     setScore(0);
+    setFirstStep(true);
   };
 
   return (
@@ -35,10 +37,15 @@ const App = () => {
           className="w-80 flex ml-auto mr-auto mb-6"
           alt="Logo"
         />
-        {showScore ? (
+        {firstStep ? (
+          <StartAudit setFirstStep = {setFirstStep}/>
+        ) : showScore ? (
           <FinalScore score={score} handleReset={handleReset}></FinalScore>
         ) : showContactInfo ? (
-          <ContactInfo setShowContactInfo={setShowContactInfo} setShowScore={setShowScore} />
+          <ContactInfo
+            setShowContactInfo={setShowContactInfo}
+            setShowScore={setShowScore}
+          />
         ) : (
           <Questionnaire
             currentQuestion={currentQuestion}

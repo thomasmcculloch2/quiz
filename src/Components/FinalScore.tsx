@@ -1,3 +1,4 @@
+import Button from "./Button";
 import Card from "./Card";
 
 interface Props {
@@ -25,12 +26,7 @@ const FinalScore = ({ score, handleReset }: Props) => (
         <Card title="Mindfulness techniques" duration={10} imageUrl="/meditation.jpg" url="https://www.youtube.com/watch?v=O-6f5wQXSu8&ab_channel=Goodful"/>
         <Card title="The importance of support" duration={2} imageUrl="/suport.jpeg" url="https://www.youtube.com/watch?v=O16Cz0dXF_Q&ab_channel=DouglasResearchCentre"/>
     </div>
-    <button
-      className="m-2 h-10 w-24 rounded-md bg-slate-200 hover:bg-slate-100 hover:shadow-xl transition-all duration-500"
-      onClick={() => handleReset()}
-    >
-      Quiz again!
-    </button>
+    <Button text = "Answer Again" onClick={handleReset} ></Button>
   </>
 );
 

@@ -4,11 +4,13 @@ import { persist } from "zustand/middleware";
 interface State {
     score: number;
     showScore: boolean;
+    firstStep: boolean;
   }
   
   interface Actions {
     setShowScore: (showScore: boolean) => void;
     setScore: (score: number) => void;
+    setFirstStep: (firstStep: boolean) => void;
   }
 
 const usePointsStore = create(
@@ -22,8 +24,13 @@ const usePointsStore = create(
         set(() => ({
           showScore,
         })),
+      setFirstStep: (firstStep:boolean) =>
+        set(() => ({
+          firstStep,
+        })),
       showScore: false,
       score: 0,
+      firstStep: true,
     }),
     {
       name: "points",
